@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta http-equiv="X-UA-Compitable" content="IE=edge">
+    <title>驾驶仓页面</title>
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-table.css">
+    <link rel="stylesheet" href="css/bootstrap-editable.css">
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        .tile {
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+            background: rgba(0,0,0,0.35);
+            position: relative;
+            margin-bottom: 15px;
+        }
+        .tile-title {
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+            background: rgba(0,0,0,0.35);
+            font-size: 11px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin: 0;
+            width: 100%;
+            padding: 7px 10px 7px;
+        }
+        .tile-config {
+            position: absolute;
+            top: 0;
+            height: 27px;
+            right: 0;
+        }
+        .tile-config > .tile-menu {
+            width: 34px;
+            height: 26px;
+            display: inline-block;
+            background-color: transparent;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url(images/tile-actions.png);
+        }
+        .dropdown-menu {
+            margin-top: -1px;
+            overflow: hidden;
+            border: 0;
+            margin: 0;
+            font-size: 12px;
+            background: rgba(255,255,255,0.85);
+        }
+        .sa-side-url-panel{
+            background: rgb(164, 173, 173);
+        }
+    </style>
+</head>
+<body id="skin-blur-blue" class="settingbody">
+<div class="topNav">
+    <div class="tm-icon">
+        <a href="javascript:void(0)" id="menu-toggle">
+            <img src="images/menu.png" alt="">
+        </a>
+    </div>
+    <a class="logo" href="index.html">
+        <img src="images/logo.png" alt="" class="img-responsive"/>
+    </a>
+    <div class="tm-icon">
+        <a  href="index.html">
+            <img src="images/home.png" alt="返回首页"/>
+        </a>
+    </div>
+    <div class="tm-icon">
+        <a href="javascript:void(0)" title="时间回溯"
+           data-container="body" data-toggle="popover" data-placement="bottom"
+           data-content="底部的 Popover 中的一些内容">
+            <img src="images/time.png" alt=""/>
+        </a>
+    </div>
+    <div class="tm-icon">
+        <a  href="javascript:void(0)">
+            <img src="images/help.png" alt="帮助"/>
+        </a>
+    </div>
+    <div class="tm-icon">
+        <a  href="javascript:void(0)">
+            <img src="images/lock.png" alt="锁定"/>
+        </a>
+    </div>
+    <div class="tm-icon">
+        <a  href="javascript:void(0)">
+            <img src="images/baseline.png" alt="基线"/>
+        </a>
+    </div>
+    <div class="searchBox">
+        <div class="input-group">
+            <label for="search" class="input-group-addon"></label>
+            <input type="text" class="form-control" id="search">
+        </div>
+    </div>
+    <div class="tm-icon">
+        <a  href="javascript:void(0)">
+            <img src="images/server.png" alt=""/>
+        </a>
+    </div>
+    <div id="time">
+        <span id="hours">10</span>
+        :
+        <span id="min">04</span>
+        :
+        <span id="sec">31</span>
+    </div>
+    <div class="tm-icon">
+        <a  href="javascript:void(0)" title="用户信息"
+            data-container="body" data-toggle="popover" data-placement="bottom"
+            data-content="底部的 Popover 中的一些内容">
+            <img src="images/userinfo.png" alt=""/>
+        </a>
+    </div>
+</div>
+<div class="Bcontent">
+    <div class="left">
+        <ul class="list-unstyled side-menu" id="imgTab">
+            <li>
+                <a class="sa-side-slt" id="text" href="#sCont1" data-toggle="tab" >
+                    <img src="images/leftbtn/leftbtn_slt.png" alt="" title="驾驶舱跳转">
+                </a>
+            </li>
+            <li>
+                <a class="sa-side-network" href="#sCont2" data-toggle="tab">
+                    <img src="images/leftbtn/leftbtn_network.png" alt="" title="网络">
+                </a>
+            </li>
+            <li>
+                <a class="sa-side-ip" href="#sCont3" data-toggle="tab">
+                    <img src="images/leftbtn/leftbtn_ip.png" alt="" title="主机">
+                </a>
+            </li>
+            <li>
+                <a class="sa-side-custom" href="#sCont4" data-toggle="tab">
+                    <img src="images/leftbtn/leftbtn_custom.png" alt="" title="自定义应用">
+                </a>
+            </li>
+            <li>
+                <a class="sa-side-web" href="#sCont5" data-toggle="tab">
+                    <img src="images/leftbtn/leftbtn_web.png" alt="" title="WEB服务">
+                </a>
+            </li>
+            <li>
+                <a class="sa-side-db" href="#sCont6" data-toggle="tab">
+                    <img src="images/leftbtn/leftbtn_db.png" alt="" title="数据库服务">
+                </a>
+                <ul class="toggleUltext none" style="width:355%;">
+                    <li><span>数据库服务</span></li>
+                    <li><a href="#">ORACLE</a></li>
+                    <li><a href="#">MYSQL</a></li>
+                    <li><a href="#">SQLSERVER</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="sa-side-url" href="#sCont7" data-toggle="tab">
+                    <img src="images/leftbtn/leftbtn_url.png" alt="" title="URL交易">
+                </a>
+                <div class="panel hide sa-side-url-panel" style="position: absolute;left: 100%; width: 1600%;">
+                    <div class="panel-heading">
+                    </div>
+                    <div class="panel-body range">
+                        <div id="toolbar2">
+                            <a href="urlsetting.html">
+                                <button  class="btn btn-default">
+                                    <span class="glyphicon glyphicon-asterisk"></span>
+                                </button>
+                            </a>
+                        </div>
+                        <table id="table5"
+                               data-toggle="table"
+                               data-toolbar="#toolbar2"
+                               data-height="150"
+                               data-url="json/table.json"
+                               data-pagination="true"
+                               data-show-columns="true"
+                               data-search="true"
+                               data-href="urlsetting.html"
+                        >
+                            <thead>
+                            <tr>
+                                <th data-field="name"  data-editable="true" data-sortable="true">URL业务</th>
+                                <th data-formatter="operateFormatter">操作</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a class="sa-side-tuli" href="#sCont8" data-toggle="tab">
+                    <img src="images/leftbtn/leftbtn_tuli.png" alt="" title="绘图">
+                </a>
+                <ul class="toggleUltext none" style="width:355%;">
+                    <li><span>绘图</span></li>
+                    <li><a href="#">文字</a></li>
+                    <li><a href="#">连接线</a></li>
+                    <li><a href="#">圆角框</a></li>
+                    <li><a href="#">链路</a></li>
+                    <li><a href="#">交换机</a></li>
+                    <li><a href="#">DB服务器</a></li>
+                    <li><a href="#">防火墙</a></li>
+                    <li><a href="#">流量控制</a></li>
+                    <li><a href="#">NAT</a></li>
+                    <li><a href="#">网络安全</a></li>
+                    <li><a href="#">路由器</a></li>
+                    <li><a href="#">服务器</a></li>
+
+                </ul>
+            </li>
+            <li>
+                <a class="sa-side-save" href="#sCont9" data-toggle="tab">
+                    <img src="images/leftbtn/leftbtn_save.png" alt="" title="保存">
+                </a>
+            </li>
+            <li>
+                <a class="sa-side-delete" href="#sCont10" data-toggle="tab">
+                    <img src="images/leftbtn/leftbtn_delete.png" alt="" title="删除">
+                </a>
+            </li>
+            <li>
+                <a class="sa-side-pic" href="#sCont11" data-toggle="tab">
+                    <img src="images/leftbtn/leftbtn_pic.png" alt="" title="驾驶舱设置">
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="right">
+    </div>
+</div>
+<div id="main"></div>
+</body>
+</html>
+<script src="js/jquery-3.2.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/changeBackground.js"></script>
+<script src="js/bootstrap-table.js"></script>
+<script src="js/bootstrap-table-zh-CN.js"></script>
+<script src="js/bootstrap-table-export.js"></script>
+<script src="js/tableExport.js"></script>
+<script src="js/bootstrap-table-editable.js"></script>
+<script src="js/bootstrap-editable.js"></script>
+<script src="js/echarts.js"></script>
+<script>
+    $(".sa-side-url").click(function(){
+        $(this).siblings(".sa-side-url-panel").toggleClass("hide").css("top",$(this).offset().top-$(this).height()-$(document).scrollTop());
+    });
+    $("#table5").on("click-row.bs.table",function(row,$element){
+        if($element.name){
+            $(".sa-side-url-panel").toggleClass("hide");
+            location.href = "urlsetting.html";
+        }
+    });
+    function operateFormatter(value, row, index) {
+        return [
+            '<img src="images/edit.png"/>',
+            '<img src="images/false.png" style="padding-left: 5%;padding-right: 5%;"/>'
+        ].join('')
+    }
+</script>

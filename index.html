@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta http-equiv="X-UA-Compitable" content="IE=edge">
+    <title>首页</title>
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body id="skin-blur-blue" class="indeBox">
+<div class="topContent8 w-100">
+    <div class="forceBox w-100">
+        <div class="topContent8Centeritem  w-100">
+            <div class="topitmBox1 w-100">
+                <a href="javascript:void (0)" class="pre-left">
+                    <img src="images/left.png" alt="" class="leftimg">
+                    <img src="images/leftf.png" alt="" class="leftfimg none">
+                </a>
+                <ul class="itmBox1">
+                    <li>
+                        <a href="cockpit.html">
+                            <img src="images/view.png" alt="" class="img-responsive">
+                            <p>驾驶舱</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <img src="images/view.png" alt=""  class="img-responsive">
+                            <p>驾驶舱</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <img src="images/view.png" alt=""  class="img-responsive">
+                            <p>驾驶舱</p>
+                        </a>
+                    </li>
+                </ul>
+                <a href="javascript:void (0)" style="" class="down-right">
+                    <img src="images/right.png" alt="" class="rightimg">
+                    <img src="images/rightf.png" alt="" class="rightfimg none">
+                </a>
+            </div>
+            <ul class="itmBox2">
+                <li>
+                    <a href="cockpitmanage.html">
+                        <img class="img-responsive" src="images/business.png" alt="业务管理">
+                        <p>业务管理</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)">
+                        <img class="img-responsive" src="images/topo.png" alt="拓扑图">
+                        <p>拓扑图</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="flowmanageSetting.html">
+                        <img class="img-responsive" src="images/traffic.png" alt="流量存储">
+                        <p>流量存储</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="alarmSetting.html">
+                        <img class="img-responsive" src="images/warning.png" alt="告警设置">
+                        <p>告警设置</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="fromSetting.html">
+                        <img class="img-responsive" src="images/report.png" alt="报表管理">
+                        <p>报表管理</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="setting.html">
+                        <img class="img-responsive" src="images/system.png" alt="系统设置">
+                        <p>系统设置</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="footer w-100">
+            <div class="footer-width"></div>
+            <div class="br-font"><img src="images/slogin.png" alt=""  class="img-responsive"/></div>
+            <div class="footer-width"></div>
+        </div>
+    </div>
+</div>
+<div class="logo-index">
+    <img src="images/logo.png"  class="img-responsive"/>
+</div>
+<div id="main" class="p-relative" role="main"></div>
+</body>
+</html>
+<script src="js/jquery-3.2.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/changeBackground.js"></script>
+<script>
+    $(".down-right").click(function(){
+        $(this).css("visibility", "hidden");
+        $(".pre-left").css("visibility", "visible");
+    });
+    $(".pre-left").click(function(){
+        $(this).css("visibility", "hidden");
+        $(".down-right").css("visibility", "visible");
+    })
+</script>

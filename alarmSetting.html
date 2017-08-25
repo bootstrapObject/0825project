@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta http-equiv="X-UA-Compitable" content="IE=edge">
+    <title>告警设置</title>
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-table.css">
+    <link rel="stylesheet" href="css/bootstrap-editable.css">
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        .fixed-table-loading{
+            background-color: #96b3a9;
+        }
+    </style>
+</head>
+<body id="skin-blur-blue" class="settingbody">
+<div class="topNav">
+    <div class="tm-icon">
+        <a href="javascript:void(0)" id="menu-toggle">
+            <img src="images/menu.png" alt="">
+        </a>
+    </div>
+    <a class="logo" href="index.html">
+        <img src="images/logo.png" alt="" class="img-responsive"/>
+    </a>
+    <div class="tm-icon">
+        <a  href="index.html">
+            <img src="images/home.png" alt="返回首页"/>
+        </a>
+    </div>
+    <div class="tm-icon">
+        <a href="javascript:void(0)" title="时间回溯"
+           data-container="body" data-toggle="popover" data-placement="bottom"
+           data-content="底部的 Popover 中的一些内容">
+            <img src="images/time.png" alt=""/>
+        </a>
+    </div>
+    <div class="tm-icon">
+        <a  href="javascript:void(0)">
+            <img src="images/help.png" alt="帮助"/>
+        </a>
+    </div>
+    <div class="tm-icon">
+        <a  href="javascript:void(0)">
+            <img src="images/lock.png" alt="锁定"/>
+        </a>
+    </div>
+    <div class="tm-icon">
+        <a  href="javascript:void(0)">
+            <img src="images/baseline.png" alt="基线"/>
+        </a>
+    </div>
+    <div class="searchBox">
+        <div class="input-group">
+            <label for="search" class="input-group-addon"></label>
+            <input type="text" class="form-control" id="search">
+        </div>
+    </div>
+    <div class="tm-icon">
+        <a  href="javascript:void(0)">
+            <img src="images/server.png" alt=""/>
+        </a>
+    </div>
+    <div id="time">
+        <span id="hours">10</span>
+        :
+        <span id="min">04</span>
+        :
+        <span id="sec">31</span>
+    </div>
+    <div class="tm-icon">
+        <a  href="javascript:void(0)" title="用户信息"
+            data-container="body" data-toggle="popover" data-placement="bottom"
+            data-content="底部的 Popover 中的一些内容">
+            <img src="images/userinfo.png" alt=""/>
+        </a>
+    </div>
+</div>
+<div class="Bcontent">
+    <div class="left">
+        <ul class="list-unstyled side-menu" id="imgTab">
+            <li>
+                <a class="sa-side-slt" id="text" href="#sCont1" data-toggle="tab" >
+                    <img src="images/leftbtn/leftbtn_slt.png" alt="" title="驾驶舱跳转">
+                </a>
+            </li>
+            <li>
+                <a class="sa-side-network" href="#sCont2" data-toggle="tab">
+                    <img src="images/leftbtn/leftbtn_network.png" alt="" title="网络">
+                </a>
+            </li>
+            <li>
+                <a class="sa-side-ip" href="#sCont3" data-toggle="tab">
+                    <img src="images/leftbtn/leftbtn_ip.png" alt="" title="主机">
+                </a>
+            </li>
+            <li>
+                <a class="sa-side-custom" href="#sCont4" data-toggle="tab">
+                    <img src="images/leftbtn/leftbtn_custom.png" alt="" title="自定义应用">
+                </a>
+            </li>
+            <li>
+                <a class="sa-side-web" href="#sCont5" data-toggle="tab">
+                    <img src="images/leftbtn/leftbtn_web.png" alt="" title="WEB服务">
+                </a>
+            </li>
+            <li>
+                <a class="sa-side-db" href="#sCont6" data-toggle="tab">
+                    <img src="images/leftbtn/leftbtn_db.png" alt="" title="数据库服务">
+                </a>
+                <ul class="toggleUltext none" style="width:355%;">
+                    <li><span>数据库服务</span></li>
+                    <li><a href="#">ORACLE</a></li>
+                    <li><a href="#">MYSQL</a></li>
+                    <li><a href="#">SQLSERVER</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="sa-side-url" href="#sCont7" data-toggle="tab">
+                    <img src="images/leftbtn/leftbtn_url.png" alt="" title="URL交易">
+                </a>
+                <div class="panel hide sa-side-url-panel" style="position: absolute;left: 123%; width: 1600%;">
+                    <div class="panel-heading">
+                    </div>
+                    <div class="panel-body range">
+                        <div id="toolbar2">
+                            <button  class="btn btn-default">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                            </button>
+                        </div>
+                        <table id="table5"
+                               data-toggle="table"
+                               data-toolbar="#toolbar2"
+                               data-height="360"
+                               data-url="json/table.json"
+                               data-pagination="true"
+                               data-show-columns="true"
+                               data-search="true"
+                        >
+                            <thead>
+                            <tr>
+                                <th data-field="name"  data-editable="true" data-sortable="true">URL业务</th>
+                                <th data-formatter="operateFormatter">操作</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a class="sa-side-tuli" href="#sCont8" data-toggle="tab">
+                    <img src="images/leftbtn/leftbtn_tuli.png" alt="" title="绘图">
+                </a>
+                <ul class="toggleUltext none" style="width:355%;">
+                    <li><span>绘图</span></li>
+                    <li><a href="#">文字</a></li>
+                    <li><a href="#">连接线</a></li>
+                    <li><a href="#">圆角框</a></li>
+                    <li><a href="#">链路</a></li>
+                    <li><a href="#">交换机</a></li>
+                    <li><a href="#">DB服务器</a></li>
+                    <li><a href="#">防火墙</a></li>
+                    <li><a href="#">流量控制</a></li>
+                    <li><a href="#">NAT</a></li>
+                    <li><a href="#">网络安全</a></li>
+                    <li><a href="#">路由器</a></li>
+                    <li><a href="#">服务器</a></li>
+
+                </ul>
+            </li>
+            <li>
+                <a class="sa-side-save" href="#sCont9" data-toggle="tab">
+                    <img src="images/leftbtn/leftbtn_save.png" alt="" title="保存">
+                </a>
+            </li>
+            <li>
+                <a class="sa-side-delete" href="#sCont10" data-toggle="tab">
+                    <img src="images/leftbtn/leftbtn_delete.png" alt="" title="删除">
+                </a>
+            </li>
+            <li>
+                <a class="sa-side-pic" href="#sCont11" data-toggle="tab">
+                    <img src="images/leftbtn/leftbtn_pic.png" alt="" title="驾驶舱设置">
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="right">
+        <div id="imgTabContent">
+            <div class="row row-zero">
+                <div class="col-md-12">
+                    <div class="panel">
+                        <div class="panel-heading bk-bg-primary">
+                            <h6>告警列表</h6>
+                        </div>
+                        <div class="panel-body range">
+                            <table id="table"
+                                   data-toggle="table"
+                                   data-toolbar="#toolbar1"
+                                   data-height="360"
+                                   data-url="json/table.json"
+                                   data-pagination="true"
+                                   data-show-columns="true"
+                            >
+                                <thead>
+                                <tr>
+                                    <th data-field="name"  data-editable="true" data-sortable="true">业务名称</th>
+                                    <th data-field="true"  data-sortable="true">自动区间</th>
+                                    <th data-field="false" data-sortable="true">动态阈值</th>
+                                    <th data-formatter="operateFormatter">自定义</th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="panel">
+                        <div class="panel-heading bk-bg-primary">
+                            <h6>业务1</h6>
+                        </div>
+                        <div class="panel-body range">
+                            <table id="table4"
+                                   data-toggle="table"
+                                   data-toolbar="#toolbar"
+                                   data-height="360"
+                                   data-pagination="true"
+                                   data-show-columns="true"
+                            >
+                                <!--       <thead>
+                                       <tr>
+                                           <th data-field="name"  data-editable="true" data-sortable="true">KPI名称</th>
+                                           <th data-field="alarm-Interval-time"  data-editable="true" data-sortable="true">自动区间</th>
+                                           <th data-field="port"  data-editable="true" data-sortable="true">当前自动区间阈值</th>
+                                           <th data-field="alarm-Interval-time"  data-editable="true" data-sortable="true">动态阈值敏感度</th>
+
+                                           <th data-field="alarm-Interval-time"  data-editable="true" data-sortable="true">普通</th>
+                                           <th data-field="alarm-Interval-time"  data-editable="true" data-sortable="true">重要</th>
+                                           <th data-field="alarm-Interval-time" data-sortable="true">紧急</th>
+                                       </tr>
+                                       </thead>-->
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="main"></div>
+</body>
+</html>
+<script src="js/jquery-3.2.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/changeBackground.js"></script>
+<script src="js/bootstrap-table.js"></script>
+<script src="js/bootstrap-table-zh-CN.js"></script>
+<script src="js/bootstrap-table-export.js"></script>
+<script src="js/tableExport.js"></script>
+<script src="js/bootstrap-table-editable.js"></script>
+<script src="js/bootstrap-editable.js"></script>
+<script src="js/echarts.js"></script>
+<script>
+    $('#table4').bootstrapTable({
+        url: 'json/table.json',
+        columns: [
+            [
+                {
+                    field: 'name',
+                    title: 'KPI名称',
+                    valign: 'middle',
+                    sortable: true,
+                    rowspan: 2
+                },
+                {
+                    field: 'alarm-Interval-time',
+                    title: '自动区间',
+                    valign: 'middle',
+                    sortable: true,
+                    rowspan: 2
+                },
+                {
+                    field: 'port',
+                    title: '当前自动区间阈值',
+                    valign: 'middle',
+                    sortable: true,
+                    rowspan: 2
+                },
+                {
+                    field:'alarm-Interval-time',
+                    title:'动态阈值敏感度',
+                    valign: 'middle',
+                    rowspan: 2
+                },
+                {
+                    title: '自定义阈值',
+                    colspan: 3,
+                    align: 'center'
+                }
+            ],
+            [
+                {
+                    field:'alarm-Interval-time',
+                    sortable: true,
+                    title:'普通'
+                },
+                {
+                    field:'alarm-Interval-time',
+                    sortable: true,
+                    title:'重要'
+                },
+                {
+                    field:'alarm-Interval-time',
+                    sortable: true,
+                    title:'紧急'
+                }
+            ]
+        ]
+    });
+    setTimeout(function () {
+        $('#table4').bootstrapTable();
+        $('#table4').bootstrapTable('resetView');
+    }, 2000);
+    //让表格随浏览器大小变化而自适应
+    $(function () {
+        $('.table').bootstrapTable(); // 初始化表格
+        $(window).resize(function () {
+            $('.table').bootstrapTable('resetView');
+        });
+    });
+
+    function operateFormatter(value, row, index) {
+        return [
+            '<img src="images/false.png" style="padding-left: 5%;padding-right: 5%;"/>'
+        ].join('')
+    }
+</script>

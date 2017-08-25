@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta http-equiv="X-UA-Compitable" content="IE=edge">
+    <title>报表设置</title>
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-table.css">
+    <link rel="stylesheet" href="css/bootstrap-editable.css">
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        .tile-title {
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+            background: rgba(0,0,0,0.43);
+            /*font-size: 11px;*/
+            text-transform: uppercase;
+            display: inline-block;
+            margin: 0;
+            width: 100%;
+            padding: 11px 10px 11px;
+            letter-spacing: 2px;
+        }
+        .tile-config {
+            position: absolute;
+            top: 5px;
+            height: 27px;
+            right: 13px;
+        }
+        .tile-config > .tile-menu {
+            width: 34px;
+            height: 26px;
+            display: inline-block;
+            background-color: transparent;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url(images/tile-actions.png);
+        }
+        .dropdown-menu {
+            margin-top: -1px;
+            overflow: hidden;
+            border: 0;
+            margin: 0;
+            font-size: 12px;
+            background: rgba(255,255,255,0.85);
+        }
+        .sa-side-url-panel{
+            background: rgb(164, 173, 173);
+        }
+    </style>
+</head>
+<body id="skin-blur-blue" class="settingbody">
+<div class="topNav">
+    <div class="tm-icon">
+        <a href="javascript:void(0)" id="menu-toggle">
+            <img src="images/menu.png" alt="">
+        </a>
+    </div>
+    <a class="logo" href="index.html">
+        <img src="images/logo.png" alt="" class="img-responsive"/>
+    </a>
+    <div class="tm-icon">
+        <a  href="index.html">
+            <img src="images/home.png" alt="返回首页"/>
+        </a>
+    </div>
+    <div class="tm-icon">
+        <a href="javascript:void(0)" title="时间回溯"
+           data-container="body" data-toggle="popover" data-placement="bottom"
+           data-content="底部的 Popover 中的一些内容">
+            <img src="images/time.png" alt=""/>
+        </a>
+    </div>
+    <div class="tm-icon">
+        <a  href="javascript:void(0)">
+            <img src="images/help.png" alt="帮助"/>
+        </a>
+    </div>
+    <div class="tm-icon">
+        <a  href="javascript:void(0)">
+            <img src="images/lock.png" alt="锁定"/>
+        </a>
+    </div>
+    <div class="tm-icon">
+        <a  href="javascript:void(0)">
+            <img src="images/baseline.png" alt="基线"/>
+        </a>
+    </div>
+    <div class="searchBox">
+        <div class="input-group">
+            <label for="search" class="input-group-addon"></label>
+            <input type="text" class="form-control" id="search">
+        </div>
+    </div>
+    <div class="tm-icon">
+        <a  href="javascript:void(0)">
+            <img src="images/server.png" alt=""/>
+        </a>
+    </div>
+    <div id="time">
+        <span id="hours">10</span>
+        :
+        <span id="min">04</span>
+        :
+        <span id="sec">31</span>
+    </div>
+    <div class="tm-icon">
+        <a  href="javascript:void(0)" title="用户信息"
+            data-container="body" data-toggle="popover" data-placement="bottom"
+            data-content="底部的 Popover 中的一些内容">
+            <img src="images/userinfo.png" alt=""/>
+        </a>
+    </div>
+</div>
+<div class="Bcontent">
+    <div class="left">
+        <ul class="list-unstyled side-menu" id="imgTab">
+            <li>
+                <a class="sa-side-slt" id="text" href="#sCont1" data-toggle="tab" >
+                    <img src="images/leftbtn/leftbtn_formset.png" alt="" title="驾驶舱跳转">
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="right">
+        <div id="imgTabContent">
+            <div class="row row-zero">
+                <div class="col-md-12">
+                    <div class="panel">
+                        <div class="panel-heading bk-bg-primary">
+                            <h6>报表</h6>
+                        </div>
+                        <div class="panel-body range">
+                            <div id="toolbar1">
+                                <button id="button" class="btn btn-default">新增</button>
+                            </div>
+                            <table id="table"
+                                   data-toggle="table"
+                                   data-toolbar="#toolbar1"
+                                   data-height="360"
+                                   data-url="json/fromSetting.json"
+                                   data-pagination="true"
+                                   data-show-columns="true"
+                                   data-search="true"
+                            >
+                                <thead>
+                                <tr>
+                                    <th data-field="fromName"  data-editable="true" data-sortable="true">报表名称</th>
+                                    <th data-field="bulidTime"  data-editable="true" data-sortable="true">创建时间</th>
+                                    <th data-field="bulidMan"  data-editable="true" data-sortable="true">创建人</th>
+                                    <th data-field="fromType"  data-editable="true" data-sortable="true">类型</th>
+                                    <th data-field="changeTime"  data-editable="true" data-sortable="true">修改时间</th>
+                                    <th data-field="changeMan"  data-editable="true" data-sortable="true">修改人</th>
+                                    <th data-field="preSendTime"  data-editable="true" data-sortable="true">上次发送时间</th>
+                                    <th data-field="nextSendTime"  data-editable="true" data-sortable="true">下次发送时间</th>
+                                    <th data-field="recetMail"  data-editable="true" data-sortable="true">接收邮箱</th>
+                                    <th data-formatter="defaulta">操作</th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="panel">
+                        <div class="panel-heading bk-bg-primary">
+                            <h6>告警级别统计</h6>
+                        </div>
+                        <div class="panel-body range">
+                            <table id="table4"
+                                   data-toggle="table"
+                                   data-toolbar="#toolbar"
+                                   data-height="360"
+                                   data-url="json/fromSetting.json"
+                                   data-pagination="true"
+                                   data-show-columns="true"
+                                   data-search="true"
+                            >
+                                <thead>
+                                <tr>
+                                    <th data-field="fromName"  data-editable="true" data-sortable="true">报表名称</th>
+                                    <th data-field="bulidTime"  data-editable="true" data-sortable="true">创建时间</th>
+                                    <th data-field="bulidMan"  data-editable="true" data-sortable="true">创建人</th>
+                                    <th data-field="fromType"  data-editable="true" data-sortable="true">类型</th>
+                                    <th data-field="changeTime"  data-editable="true" data-sortable="true">修改时间</th>
+                                    <th data-field="changeMan"  data-editable="true" data-sortable="true">修改人</th>
+                                    <th data-field="preSendTime"  data-editable="true" data-sortable="true">上次发送时间</th>
+                                    <th data-field="nextSendTime"  data-editable="true" data-sortable="true">下次发送时间</th>
+                                    <th data-field="recetMail"  data-editable="true" data-sortable="true">接收邮箱</th>
+                                    <th data-formatter="operateFormatter">操作</th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-zero">
+                <div class="col-md-6">
+                    <div class="panel">
+                        <h6 class="tile-title">线图</h6>
+                        <div class="tile-config pull-right" style="margin-right: 18px;">
+                            <a href="javascript:void(0)"><img src="images/baseline.png" alt="基线"></a>
+                            <a href="javascript:void(0)"><img src="images/addcockpit.png" alt="添加驾驶舱"></a>
+                            <a href="javascript:void(0)"><img src="images/addreport.png" alt="添加报表"></a>
+                            <a href="javascript:void(0)"><img src="images/delete.png" alt="删除"></a>
+                        </div>
+               <!--         <div class="tile-config dropdown">
+                            <a data-toggle="dropdown" href="" class="tile-menu"></a>
+                            <ul class="dropdown-menu pull-right text-right">
+                                <li>
+                                    <a href="">Refresh</a>
+                                </li>
+                                <li>
+                                    <a href="">Settings</a>
+                                </li>
+                            </ul>
+                        </div>-->
+                        <div class="p-10">
+                            <div class="line" style="height: 30rem; padding: 0px; position: relative;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel">
+                        <img src="images/append.png" alt="添加" class="center-block" style="padding: 99.4px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="main"></div>
+</body>
+</html>
+<script src="js/jquery-3.2.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/changeBackground.js"></script>
+<script src="js/bootstrap-table.js"></script>
+<script src="js/bootstrap-table-zh-CN.js"></script>
+<script src="js/bootstrap-table-export.js"></script>
+<script src="js/tableExport.js"></script>
+<script src="js/bootstrap-table-editable.js"></script>
+<script src="js/bootstrap-editable.js"></script>
+<script src="js/echarts.js"></script>
+<script>
+    !function (){
+        var myChart = echarts.init($(".line")[0]);
+        option = {
+            backgroundColor:"rgba(0,0,0,0.2)",
+            title: {
+                text: '折线图堆叠',
+                textStyle:{
+                    color:"#fff"
+                }
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['周一','周二','周三','周四','周五','周六','周日'],
+                axisLine:{
+                    lineStyle:{
+                        color:"#fff"
+                    }
+                }
+            },
+            yAxis: {
+                type: 'value',
+                axisLine:{
+                    lineStyle:{
+                        color:"#fff"
+                    }
+                }
+            },
+            series: [
+                {
+                    type:'line',
+                    stack: '总量',
+                    data:[120, 132, 101, 134, 90, 230, 210],
+                    itemStyle:{
+                        normal:{
+                            color:"rgba(222,147,34,1)"
+                        }
+                    }
+                }
+            ]
+        };
+        myChart.setOption(option);
+        $(window).resize(function(){
+            myChart.resize();
+        })
+    }();
+    function defaulta(value,row,index){
+        return [
+            '<img src="images/edit.png"/>',
+            '<img src="images/false.png" style="padding-left: 5%;padding-right: 5%;"/>',
+            '<img src="images/default.png"/>'
+        ].join('')
+    }
+    function operateFormatter(value, row, index) {
+        return [
+            '<img src="images/edit.png"/>',
+            '<img src="images/false.png" style="padding-left: 5%;padding-right: 5%;"/>'
+        ].join('')
+    }
+</script>

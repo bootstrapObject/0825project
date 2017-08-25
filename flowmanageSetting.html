@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta http-equiv="X-UA-Compitable" content="IE=edge">
+    <title>流量管理与设置页面</title>
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-table.css">
+    <link rel="stylesheet" href="css/bootstrap-editable.css">
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        #selectFromControl{
+            background:rgba(255,255,255,.2);
+        }
+       option{
+            background:rgba(39, 41, 41, 0.2);
+        }
+    </style>
+</head>
+<body id="skin-blur-blue" class="settingbody">
+<div class="topNav">
+    <div class="tm-icon">
+        <a href="javascript:void(0)" id="menu-toggle">
+            <img src="images/menu.png" alt="">
+        </a>
+    </div>
+    <a class="logo" href="index.html">
+        <img src="images/logo.png" alt="" class="img-responsive"/>
+    </a>
+    <div class="tm-icon">
+        <a  href="index.html">
+            <img src="images/home.png" alt="返回首页"/>
+        </a>
+    </div>
+    <div class="tm-icon">
+        <a href="javascript:void(0)" title="时间回溯"
+           data-container="body" data-toggle="popover" data-placement="bottom"
+           data-content="底部的 Popover 中的一些内容">
+            <img src="images/time.png" alt=""/>
+        </a>
+    </div>
+    <div class="tm-icon">
+        <a  href="javascript:void(0)">
+            <img src="images/help.png" alt="帮助"/>
+        </a>
+    </div>
+    <div class="tm-icon">
+        <a  href="javascript:void(0)">
+            <img src="images/lock.png" alt="锁定"/>
+        </a>
+    </div>
+    <div class="tm-icon">
+        <a  href="javascript:void(0)">
+            <img src="images/baseline.png" alt="基线"/>
+        </a>
+    </div>
+    <div class="searchBox">
+        <div class="input-group">
+            <label for="search" class="input-group-addon"></label>
+            <input type="text" class="form-control" id="search">
+        </div>
+    </div>
+    <div class="tm-icon">
+        <a  href="javascript:void(0)">
+            <img src="images/server.png" alt=""/>
+        </a>
+    </div>
+    <div id="time">
+        <span id="hours">10</span>
+        :
+        <span id="min">04</span>
+        :
+        <span id="sec">31</span>
+    </div>
+    <div class="tm-icon">
+        <a  href="javascript:void(0)" title="用户信息"
+            data-container="body" data-toggle="popover" data-placement="bottom"
+            data-content="底部的 Popover 中的一些内容">
+            <img src="images/userinfo.png" alt=""/>
+        </a>
+    </div>
+</div>
+<div class="Bcontent">
+    <div class="left">
+        <ul class="list-unstyled side-menu" id="imgTab">
+            <li>
+                <a class="sa-side-slt" id="text" href="#sCont1" data-toggle="tab" >
+                    <img src="images/leftbtn/leftbtn_sts.png" alt="" title="标准存储方案">
+                </a>
+            </li>
+            <li>
+                <a class="sa-side-network" href="#sCont2" data-toggle="tab">
+                    <img src="images/leftbtn/leftbtn_ads.png" alt="" title="高级存储方案">
+                </a>
+            </li>
+            <li>
+                <a class="sa-side-ip" href="#sCont3" data-toggle="tab">
+                    <img src="images/leftbtn/leftbtn_his.png" alt="" title="历史数据提取">
+                </a>
+            </li>
+            <li>
+                <a class="sa-side-custom" href="#sCont4" data-toggle="tab">
+                    <img src="images/leftbtn/leftbtn_data.png" alt="" title="获取数据列表">
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="right">
+        <div class="tab-content" id="imgTabContent">
+                <div class="tab-pane fade in active" id="sCont1">
+                    <div class="row row-zero">
+                        <div class="col-md-12">
+                            <div class="panel">
+                                <div class="panel-heading bk-bg-primary">
+                                    <h6>标准存储方案</h6>
+                                </div>
+                                <div class="panel-body">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="">网卡：</label>
+                                                <input type="checkbox">
+                                                <!--          <input type="text" id="ipAdress" name="nf-email" class="form-control" placeholder="IP地址">-->
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="maskByte">BPF过滤条件：</label>
+                                                <input type="text" id="maskByte" class="form-control" placeholder="掩码位数">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="defaultGateway">IP：</label>
+                                                <input type="text" id="defaultGateway" class="form-control" placeholder="默认网关">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="">端口:</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="">选择协议:</label>
+                                                <select name="" id="selectFromControl" class="form-control">
+                                                    <option value="">1111</option>
+                                                    <option value="">2222</option>
+                                                    <option value="">3333</option>
+                                                    <option value="">4444</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="">是否启用:</label>
+                                                <input type="radio" name="radio">
+                                                <label for="">是</label>
+                                                <input type="radio" name="radio">
+                                                <label for="">否</label>
+                                            </div>
+                                        </div>
+                                        <span class="updateManageNetworkInfoUbuntuSpan"></span>
+                                        <div class="col-md-12">
+                                            <button class="btn pull-right btnSelf" id="updateManageNetworkInfoUbuntu">确定</button>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade in" id="sCont2">
+                    <div class="row row-zero">
+                        <div class="col-md-12">
+                            <div class="panel">
+                                <div class="panel-heading bk-bg-primary">
+                                    <h6>高级存储方案</h6>
+                                </div>
+                                <div class="panel-body range">
+                                    <div id="toolbar1">
+                                        <button id="button" class="btn btn-default">新增</button>
+                                    </div>
+                                    <table id="table"
+                                           data-toggle="table"
+                                           data-toolbar="#toolbar1"
+                                           data-height="360"
+                                           data-url="json/table.json"
+                                           data-pagination="true"
+                                           data-show-columns="true"
+                                    >
+                                        <thead>
+                                        <tr>
+                                            <th data-field="name"  data-editable="true" data-sortable="true">名称</th>
+                                            <th data-field="ip"  data-editable="true" data-sortable="true">开始时间</th>
+                                            <th data-field="port"  data-editable="true" data-sortable="true">结束时间</th>
+                                            <th data-field="Interval-time"  data-editable="true" data-sortable="true">网卡</th>
+                                            <th data-field="pre-Interval-time"  data-editable="true" data-sortable="true">bpf过滤条件</th>
+                                            <th data-field="state"  data-editable="true" data-sortable="true">数据包大小</th>
+                                            <th data-field="Remarks"  data-editable="true" data-sortable="true">状态</th>
+                                            <th data-formatter="operateFormatter" data-events="operateEvents" data-sortable="true">操作</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade in" id="sCont3">
+                   <div class="row row-zero">
+                       <div class="col-md-12">
+                           <div class="panel">
+                               <div class="panel-heading bk-bg-primary">
+                                   <h6>历史数据提取</h6>
+                               </div>
+                               <div class="panel-body">
+                                   <div class="col-md-12">
+                                       <div class="form-group">
+                                           <label for="">选择网卡：</label>
+                                           <input type="checkbox">
+                                           <!--          <input type="text" id="ipAdress" name="nf-email" class="form-control" placeholder="IP地址">-->
+                                       </div>
+                                   </div>
+                                   <div class="col-md-6">
+                                       <div class="form-group">
+                                           <label for="maskByte2">BPF过滤条件：</label>
+                                           <input type="text" id="maskByte2" class="form-control" placeholder="掩码位数">
+                                       </div>
+                                   </div>
+                                   <div class="col-md-6">
+                                       <div class="form-group">
+                                           <label for="defaultGateway2">IP：</label>
+                                           <input type="text" id="defaultGateway2" class="form-control" placeholder="默认网关">
+                                       </div>
+                                   </div>
+                                   <div class="col-md-6">
+                                       <div class="form-group">
+                                           <label>开始时间：</label>
+                                           <div class="input-group date form_datetime">
+                                               <input type="text" size="30" class="form-control">
+                                               <span class="input-group-addon btnSelf"><span class="glyphicon glyphicon-th"></span></span>
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <div class="col-md-6">
+                                       <div class="form-group">
+                                           <label>结束时间：</label>
+                                           <div class="input-group date form_datetime">
+                                               <input type="text" size="30" class="form-control">
+                                               <span class="input-group-addon btnSelf"><span class="glyphicon glyphicon-th"></span></span>
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <div class="col-md-6">
+                                       <div class="form-group">
+                                           <label for="">端口:</label>
+                                           <input type="text" class="form-control">
+                                       </div>
+                                   </div>
+                                   <div class="col-md-6">
+                                       <div class="form-group">
+                                           <label for="">选择协议:</label>
+                                           <select name="" id="" class="form-control">
+                                               <option value="">1111</option>
+                                               <option value="">2222</option>
+                                               <option value="">3333</option>
+                                               <option value="">4444</option>
+                                           </select>
+                                       </div>
+                                   </div>
+                                   <div class="col-md-12">
+                                       <div class="form-group">
+                                           <label for="">是否启用:</label>
+                                           <input type="radio" name="radio">
+                                           <label for="">是</label>
+                                           <input type="radio" name="radio">
+                                           <label for="">否</label>
+                                       </div>
+                                   </div>
+                                   <span class="updateManageNetworkInfoUbuntuSpan2"></span>
+                                   <div class="col-md-12">
+                                       <button class="btn btn-default btnself">iDegger在线解析</button>
+                                       <button class="btn btn-default btnself">下载到本地</button>
+                                   </div>
+                                   <div class="col-md-12">
+                                       <button class="btn pull-right btnSelf" id="updateManageNetworkInfoUbuntu2">确定</button>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                </div>
+                <div class="tab-pane fade in" id="sCont4">
+                    <div class="row row-zero">
+                        <div class="col-md-12">
+                            <div class="panel">
+                                <div class="panel-heading bk-bg-primary">
+                                    <h6>获取数据列表</h6>
+                                </div>
+                                <div class="panel-body range">
+                                    <table id="table3"
+                                           data-toggle="table"
+                                           data-toolbar="#toolbar"
+                                           data-url="/sysNetworkSet/netConfigList.do"
+                                           data-pagination="true"
+                                           data-show-columns="true"
+                                           data-height="360"
+                                    >
+                                        <thead>
+                                        <tr>
+                                            <th data-field="name"  data-editable="true" data-sortable="true">编号</th>
+                                            <th data-field="workCond"  data-editable="true" data-sortable="true">文件</th>
+                                            <th data-field="rxBytes"  data-editable="true" data-sortable="true">大小</th>
+                                            <th data-field="rxPackets"  data-editable="true" data-sortable="true">开始时间</th>
+                                            <th data-field="ip"  data-editable="true" data-sortable="true">操作</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                    <div class="btns" style="margin-top: 15px;">
+                                        <button class="block-title btn pull-right btnSelf">iDegger在线解析</button>
+                                        <button class="block-title btn pull-right btnSelf" style="margin-right: 32px;">下载到本地</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+<div id="main"></div>
+</body>
+</html>
+<script src="js/jquery-3.2.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/changeBackground.js"></script>
+<script src="js/bootstrap-table.js"></script>
+<script src="js/bootstrap-table-zh-CN.js"></script>
+<script src="js/bootstrap-table-export.js"></script>
+<script src="js/tableExport.js"></script>
+<script src="js/bootstrap-table-editable.js"></script>
+<script src="js/bootstrap-editable.js"></script>
+<script src="js/echarts.js"></script>
+<script src="js/bootstrap-datetimepicker.js"></script>
+<script src="js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script>
+    function operateFormatter(value, row, index) {
+        return [
+            '<img src="images/edit.png"/>',
+            '<img src="images/false.png" style="padding-left: 5%;padding-right: 5%;"/>'
+        ].join('')
+    }
+    /*日期控件*/
+    $('.form_datetime').datetimepicker({
+        language:  'zh-CN',
+        format: 'yyyy-mm-dd hh:ii:ss',
+        weekStart: 1,
+        todayBtn:  true,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        forceParse: 0,
+        showMeridian: 1,
+        pickerPosition:"bottom-left"
+    });
+</script>

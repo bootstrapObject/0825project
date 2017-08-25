@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta http-equiv="X-UA-Compitable" content="IE=edge">
+    <title>系统设置页面</title>
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-table.css">
+    <link rel="stylesheet" href="css/bootstrap-editable.css">
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        .dropdown-menu {
+            padding: 0;
+            min-width: 260px;
+            background: rgba(255,255,255,1);
+            right: 0;
+            left: auto;
+        }
+        .dropdown-menu:after {
+            position: absolute;
+            top: -7px;
+            right: 13px;
+            display: inline-block;
+            border-right: 8px solid transparent;
+            border-bottom: 8px solid white;
+            border-left: 8px solid transparent;
+            content: '';
+        }
+        .dropdown-menu-header {
+            background: rgba(230,232,234,1);
+            border: 1px solid white;
+            font-weight: 700;
+            color: #000;
+            line-height: 35px;
+        }
+        .dropdown-menu-header > span {
+            padding-left: 10px;
+        }
+    </style>
+</head>
+<body id="skin-blur-blue" class="settingbody">
+<div class="topNav">
+    <div class="tm-icon">
+        <a href="javascript:void(0)" id="menu-toggle">
+            <img src="images/menu.png" alt="">
+        </a>
+    </div>
+    <a class="logo" href="index.html">
+        <img src="images/logo.png" alt="" class="img-responsive"/>
+    </a>
+    <div class="tm-icon">
+        <a  href="index.html">
+            <img src="images/home.png" alt="首页"/>
+        </a>
+    </div>
+    <div class="tm-icon dropdown">
+        <!--<a href="javascript:void(0)" title="时间回溯"-->
+           <!--data-container="body" data-toggle="popover" data-placement="bottom"-->
+           <!--data-content="底部的 Popover 中的一些内容"-->
+        <!--&gt;-->
+        <a href="javascript:void(0)" title="时间回溯" class="dropdown-toggle" data-toggle="dropdown">
+            <img src="images/time.png" alt=""/>
+        </a>
+        <ul class="dropdown-menu">
+            <li class="dropdown-menu-header">
+                <span>标题</span>
+            </li>
+            <li><a href="javascript:void(0)"><i class="fa fa-user"></i> 内容1</a></li>
+            <li><a href="javascript:void(0)"><i class="fa fa-wrench"></i>内容2</a></li>
+            <li><a href="javascript:void(0)"><i class="fa fa-usd"></i> 内容3</a></li>
+            <li><a href="javascript:void(0)"><i class="fa fa-file"></i> 内容4</a></li>
+        </ul>
+    </div>
+    <div class="tm-icon">
+        <a  href="javascript:void(0)">
+            <img src="images/help.png" alt=""/>
+        </a>
+    </div>
+    <div class="searchBox">
+        <div class="input-group">
+            <label for="search" class="input-group-addon"></label>
+            <input type="text" class="form-control" id="search">
+        </div>
+    </div>
+    <div class="tm-icon">
+        <a  href="javascript:void(0)">
+            <img src="images/server.png" alt=""/>
+        </a>
+    </div>
+    <div id="time">
+        <span id="hours">10</span>
+        :
+        <span id="min">04</span>
+        :
+        <span id="sec">31</span>
+    </div>
+    <div class="tm-icon dropdown">
+        <a  href="javascript:void(0)" title="用户信息" class="dropdown-toggle" data-toggle="dropdown">
+            <img src="images/userinfo.png" alt=""/>
+        </a>
+        <ul class="dropdown-menu">
+            <li class="dropdown-menu-header">
+                <span>标题</span>
+            </li>
+            <li><a href="javascript:void(0)"><i class="fa fa-user"></i> 内容1</a></li>
+            <li><a href="javascript:void(0)"><i class="fa fa-wrench"></i>内容2</a></li>
+            <li><a href="javascript:void(0)"><i class="fa fa-usd"></i> 内容3</a></li>
+            <li><a href="javascript:void(0)"><i class="fa fa-file"></i> 内容4</a></li>
+        </ul>
+    </div>
+</div>
+<div class="Bcontent">
+    <div class="left">
+        <ul class="list-unstyled side-menu" id="imgTab">
+            <li>
+                <a class="sa-side-set" id="text" href="#sCont1" data-toggle="tab" >
+                    <img src="images/leftbtn/leftbtn-set.png" alt="" title="系统管理">
+                </a>
+                <ul class="toggleUltext none" style="width:305%;">
+                    <li><span>系统管理</span></li>
+                    <li><a href="#">系统时间设置</a></li>
+                    <li><a href="#">生成授权文件</a></li>
+                    <li><a href="#">上传授权文件</a></li>
+                    <li><a href="#">上传升级文件</a></li>
+                    <li><a href="#">系统厂商信息</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="sa-side-admin" href="#sCont2" data-toggle="tab">
+                    <img src="images/leftbtn/leftbtn-admin.png" alt="" title="用户管理">
+                </a>
+                <ul class="toggleUltext none" style="width:305%;">
+                    <li><span>用户管理</span></li>
+                </ul>
+            </li>
+            <li>
+                <a class="sa-side-pro" href="#sCont3" data-toggle="tab">
+                    <img src="images/leftbtn/leftbtn-pro.png" alt="" title="产品配置与管理">
+                </a>
+                <ul class="toggleUltext none" style="width:355%;">
+                    <li><span>产品配置与管理</span></li>
+                    <li><a href="#">配置导入与导出</a></li>
+                    <li><a href="#">数据存储设置</a></li>
+                    <li><a href="#">数据包去重</a></li>
+                    <li><a href="#">管理口设置</a></li>
+                    <li><a href="#">总宽带设置</a></li>
+                    <li><a href="#">网卡管理与设置</a></li>
+                    <li><a href="#">服务器网段设置</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="sa-side-tool" href="#sCont4" data-toggle="tab">
+                    <img src="images/leftbtn/leftbtn-tool.png" alt="" title="常用工具管理">
+                </a>
+                <ul class="toggleUltext none" style="width:355%;">
+                    <li><span>常用工具管理</span></li>
+                    <li><a href="#">页面URL性能分析</a></li>
+                    <li><a href="#">网络诊断</a></li>
+                    <li><a href="#">应用可用性设置</a></li>
+                    <li><a href="#">日志管理</a></li>
+                    <li><a href="#">设备操作</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="right" role="main"  id="main" >
+        <div class="tab-content" id="imgTabContent">
+            <div class="tab-pane fade in" id="sCont1">
+                <div class="row row-zero">
+                    <div class="col-md-6">
+                        <div class="panel">
+                            <div class="panel-heading bk-bg-primary">
+                                <h6>系统时间设置</h6>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label for="SystemTimeIng">当前系统时间：</label>
+                                    <div class="input-group date form_datetime">
+                                        <input type="text" size="30" class="form-control" id="SystemTimeIng" style="z-index: 0;">
+                                        <span class="input-group-addon btnSelf"><span class="glyphicon glyphicon-th"></span></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="asyncFalseServerTime">时间同步服务器：</label>
+                                    <input type="text" id="asyncFalseServerTime" class="form-control">
+                                </div>
+                                <span class="sameServer-span"></span>
+                                <button class="btn pull-right btnSelf sameServer" id="sameServer">确定</button>
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-heading bk-bg-primary">
+                                <h6>上传授权文件</h6>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label for="nf-password5">上传授权文件：</label>
+                                    <input type="file" id="nf-password5"  class="form-control" placeholder="上传授权文件">
+                                </div>
+                                <button class="btn pull-right btnSelf">开始上传</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel">
+                            <div class="panel-heading bk-bg-primary">
+                                <h6>生成授权文件</h6>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="nf-email2">用户名称：</label>
+                                            <input type="text" id="nf-email2"  class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="nf-password2">代理商名称：</label>
+                                            <input type="text" id="nf-password2" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="nf-password3">联系人：</label>
+                                            <input type="text" id="nf-password3"  class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="nf-password4">联系名称：</label>
+                                            <input type="text" id="nf-password4"  class="form-control">
+                                        </div>
+                                    </div>
+                                    <button class="btn pull-right btnSelf" style="margin-right: 2%;">确定</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-heading bk-bg-primary">
+                                <h6>上传升级文件</h6>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label for="nf-password6">上传升级文件：</label>
+                                    <input type="file" id="nf-password6"  class="form-control" placeholder="上传升级文件">
+                                </div>
+                                <button class="btn pull-right btnSelf">开始上传</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-zero">
+                    <div class="col-md-12">
+                        <div class="panel">
+                            <div class="panel-heading bk-bg-primary">
+                                <h6>系统厂商信息</h6>
+                            </div>
+                            <div class="panel-body">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>类别</th>
+                                        <th>内容</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>用户名称</td>
+                                        <td class="systd"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>代理商名称</td>
+                                        <td class="systd"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>生产厂商</td>
+                                        <td class="systd"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>技术服务电话</td>
+                                        <td class="systd"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>产品型号</td>
+                                        <td class="systd"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>系统版本</td>
+                                        <td class="systd"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>许可证有效期</td>
+                                        <td class="systd"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>网络监控</td>
+                                        <td class="systd"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>应用监控</td>
+                                        <td class="systd"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>交易监控</td>
+                                        <td class="systd"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade in" id="sCont2">
+                <div class="row row-zero">
+                    <div class="col-md-12">
+                        <div class="panel">
+                            <div class="panel-heading bk-bg-primary">
+                                <h6>账号管理</h6>
+                            </div>
+                            <div class="panel-body range">
+                                <table id="table6"
+                                       data-toggle="table"
+                                       data-height="360"
+                                       data-url="json/table.json"
+                                       data-pagination="true"
+                                       data-show-columns="true"
+                                >
+                                    <thead>
+                                    <tr>
+                                        <th data-field="name"  data-editable="true" data-sortable="true">编号</th>
+                                        <th data-field="ip"  data-editable="true" data-sortable="true">用户名</th>
+                                        <th data-field="port"  data-editable="true" data-sortable="true">实际姓名</th>
+                                        <th data-field="Interval-time"  data-editable="true" data-sortable="true">邮箱</th>
+                                        <th data-field="pre-Interval-time"  data-editable="true" data-sortable="true">电话</th>
+                                        <th data-field="state"  data-editable="true" data-sortable="true">角色</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade in active" id="sCont3">
+                <div class="row row-zero">
+                    <div class="col-md-6">
+                        <div class="panel">
+                            <div class="panel-heading bk-bg-primary">
+                                <h6>配置导入与导出</h6>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label for="nf-email5">配置导入：</label>
+                                </div>
+                                <div class="input-group">
+                                    <input type="file" id="nf-email5" class="form-control" placeholder="配置导入" style="z-index: 0;">
+                                    <span class="input-group-addon cursor btnSelf">确定</span>
+                                </div>
+                                <div class="form-group" style="margin-top:4%;">
+                                    <label>配置导出：</label>
+                                    <button class="btn btnSelf">配置导出</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-heading bk-bg-primary">
+                                <h6>管理口设置</h6>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label for="ipAdress">IP地址：</label>
+                                    <input type="text" id="ipAdress"  class="form-control" placeholder="IP地址">
+                                </div>
+                                <div class="form-group">
+                                    <label for="maskByte">掩码位数：</label>
+                                    <input type="text" id="maskByte"  class="form-control" placeholder="掩码位数">
+                                </div>
+                                <div class="form-group">
+                                    <label for="defaultGateway">默认网关：</label>
+                                    <input type="text" id="defaultGateway" class="form-control" placeholder="默认网关">
+                                </div>
+                                <span class="updateManageNetworkInfoUbuntuSpan"></span>
+                                <button class="btn pull-right btnSelf" id="updateManageNetworkInfoUbuntu">确定</button>
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-heading bk-bg-primary">
+                                <h6>设备操作</h6>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <span>操作：</span>
+                                    <label class="checkbox-inline">
+                                        <input type="radio" name="optionsRadios2" value="option1" checked="checked">重启服务器
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="radio" name="optionsRadios2" value="option2">关闭服务器
+                                    </label>
+                                </div>
+                                <button class="btn pull-right btnSelf">确定</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel">
+                            <div class="panel-heading bk-bg-primary">
+                                <h6>数据存储设置</h6>
+                            </div>
+                            <div class="panel-body">
+                                <div class="set-form">
+                                    <span class="sub-title">文件夹大小：</span>
+                                    <label class="checkbox-inline">
+                                        <input type="radio" name="optionsRadios" value="10MB"> 10MB
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="radio" name="optionsRadios" value="100MB">100MB
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="radio" name="optionsRadios" value="500MB" id="fileSize">500MB
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="radio" name="optionsRadios" value="1G">1G
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="dataSave-input">原始数据存储目录：</label>
+                                    <span class="clearTargetDirSpan"></span>
+                                    <div class="input-group">
+                                        <input type="text" class="input-sm form-control" id="dataSave-input" disabled>
+                                        <span class="input-group-addon cursor clearTargetDir btnSelf">清空</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="histroyfile">历史提取文件目录：</label>
+                                    <span class="clearTargetDirSpan"></span>
+                                    <div class="input-group">
+                                        <input type="text" class="input-sm form-control" id="histroyfile" disabled>
+                                        <span class="input-group-addon cursor clearTargetDir btnSelf">清空</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="AnalysisData-input">分析数据目录：</label>
+                                    <span class="clearTargetDirSpan"></span>
+                                    <div class="input-group">
+                                        <input type="text" class="input-sm form-control" id="AnalysisData-input" disabled>
+                                        <span class="input-group-addon cursor clearTargetDir btnSelf">清空</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="DiskUse-input">磁盘利用率：</label>
+                                    <div class="input-group">
+                                        <input type="text" class="input-sm form-control" id="DiskUse-input" required>
+                                    </div>
+                                </div>
+                                <span class="operationDataStorageSet-span"></span>
+                                <button class="btn pull-right btnSelf" id="operationDataStorageSet">确定</button>
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-heading bk-bg-primary">
+                                <h6>数据包去重</h6>
+                            </div>
+                            <div class="panel-body">
+                                <span>操作：</span>
+                                <label class="checkbox-inline">
+                                    <input type="radio" name="optionsRadios1" value="option1" checked="checked">开启去重
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="radio" name="optionsRadios1" value="option2">关闭去重
+                                </label>
+                                <button class="btn pull-right btnSelf">确定</button>
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-heading bk-bg-primary">
+                                <h6>总带宽设置</h6>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label for="bandWidth">配置导入：</label>
+                                    <input type="text" id="bandWidth" class="form-control" placeholder="总带宽设置">
+                                </div>
+                                <span class="totalBandspan"></span>
+                                <button class="btn pull-right btnSelf totalBand">确定</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-zero">
+                    <div class="col-md-12">
+                        <div class="panel">
+                            <div class="panel-heading bk-bg-primary">
+                                <h6>网卡管理与设置</h6>
+                            </div>
+                            <div class="panel-body range">
+                                <table id="table3"
+                                       data-toggle="table"
+                                       data-toolbar="#toolbar"
+                                       data-url="/sysNetworkSet/netConfigList.do"
+                                       data-pagination="true"
+                                       data-show-columns="true"
+                                       data-height="360"
+                                >
+                                    <thead>
+                                    <tr>
+                                        <th data-field="name"  data-editable="true" data-sortable="true">网卡名称</th>
+                                        <th data-field="workCond"  data-editable="true" data-sortable="true">网卡是否开启</th>
+                                        <th data-field="rxBytes"  data-editable="true" data-sortable="true">接收字节</th>
+                                        <th data-field="rxPackets"  data-editable="true" data-sortable="true">接收数据包</th>
+                                        <th data-field="ip"  data-editable="true" data-sortable="true">ip地址</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                                <div class="btns">
+                                    <button class="block-title btn pull-right btnSelf">停止分析</button>
+                                    <button class="block-title btn pull-right btnSelf" style="margin-right: 32px;">开始分析</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-heading bk-bg-primary">
+                                <h6>服务器网段设置</h6>
+                            </div>
+                            <div class="panel-body range">
+                                <table id="table4"
+                                       data-toggle="table"
+                                       data-toolbar="#toolbar"
+                                       data-height="360"
+                                       data-url="json/table.json"
+                                       data-pagination="true"
+                                       data-show-columns="true"
+                                       data-search="true"
+                                >
+                                    <thead>
+                                    <tr>
+                                        <th data-field="name"  data-editable="true" data-sortable="true">用户</th>
+                                        <th data-field="alarm-Interval-time"  data-editable="true" data-sortable="true">登录时间</th>
+                                        <th data-field="port"  data-editable="true" data-sortable="true">登出时间</th>
+                                        <th data-field="ip"  data-editable="true" data-sortable="true">来源</th>
+                                        <th data-field="Remarks"  data-editable="true" data-sortable="true">操作内容</th>
+                                        <th data-formatter="operateFormatter" data-sortable="true">操作</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade in" id="sCont4">
+                <div class="row row-zero">
+                    <div class="col-md-6">
+                        <div class="panel">
+                            <div class="panel-heading bk-bg-primary">
+                                <h6>页面URL性能分析</h6>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label for="changeUrl">修改URL：</label>
+                                    <input type="text" id="changeUrl"  class="form-control" placeholder="修改URL">
+                                </div>
+                                <button class="btn pull-right btnSelf">确定</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel">
+                            <div class="panel-heading bk-bg-primary">
+                                <h6>网络诊断</h6>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label for="enterIpAdress">请输入IP地址：</label>
+                                    <input type="text" id="enterIpAdress"  class="form-control" placeholder="请输入IP地址">
+                                </div>
+                                <button class="btn pull-right btnSelf">确定</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-zero">
+                    <div class="col-md-12">
+                        <div class="panel">
+                            <div class="panel-heading bk-bg-primary">
+                                <h6>应用可用性设置</h6>
+                            </div>
+                            <div class="panel-body range">
+                                <div id="toolbar1">
+                                    <button id="button" class="btn btn-default">新增</button>
+                                </div>
+                                <table id="table"
+                                       data-toggle="table"
+                                       data-toolbar="#toolbar1"
+                                       data-height="360"
+                                       data-url="json/table.json"
+                                       data-pagination="true"
+                                       data-show-columns="true"
+                                >
+                                    <thead>
+                                    <tr>
+                                        <th data-field="name"  data-editable="true" data-sortable="true">名称</th>
+                                        <th data-field="ip"  data-editable="true" data-sortable="true">IP</th>
+                                        <th data-field="port"  data-editable="true" data-sortable="true">端口</th>
+                                        <th data-field="Interval-time"  data-editable="true" data-sortable="true">间隔时间(分钟)</th>
+                                        <th data-field="pre-Interval-time"  data-editable="true" data-sortable="true">间隔时间(上一次执行时间)</th>
+                                        <th data-field="state"  data-editable="true" data-sortable="true">状态</th>
+                                        <th data-field="Remarks"  data-editable="true" data-sortable="true">备注</th>
+                                        <th data-field="alarmEmail"  data-editable="true" data-sortable="true">告警邮件地址</th>
+                                        <th data-field="alarmPhoneNumber"  data-editable="true" data-sortable="true">告警短信号码</th>
+                                        <th data-field="alarm-Interval-time"  data-editable="true" data-sortable="true">告警时间间隔(分钟)</th>
+                                        <th data-formatter="operateFormatter" data-events="operateEvents" data-sortable="true">操作</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-heading bk-bg-primary">
+                                <h6>日志管理</h6>
+                            </div>
+                            <div class="panel-body range content">
+                                <table id="table2"
+                                       data-toggle="table"
+                                       data-toolbar="#toolbar"
+                                       data-height="360"
+                                       data-url="json/table.json"
+                                       data-pagination="true"
+                                       data-show-columns="true"
+                                       data-show-export="true"
+                                >
+                                    <thead>
+                                    <tr>
+                                        <th data-field="name"  data-editable="true" data-sortable="true">用户</th>
+                                        <th data-field="alarm-Interval-time"  data-editable="true" data-sortable="true">登录时间</th>
+                                        <th data-field="port"  data-editable="true" data-sortable="true">登出时间</th>
+                                        <th data-field="ip"  data-editable="true" data-sortable="true">来源</th>
+                                        <th data-field="Remarks"  data-editable="true" data-sortable="true">操作内容</th>
+                                        <th data-formatter="operateFormatter">操作</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="js/jquery-3.2.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/changeBackground.js"></script>
+<script src="js/bootstrap-table.js"></script>
+<script src="js/bootstrap-table-zh-CN.js"></script>
+<script src="js/bootstrap-table-export.js"></script>
+<script src="js/tableExport.js"></script>
+<script src="js/bootstrap-table-editable.js"></script>
+<script src="js/bootstrap-editable.js"></script>
+<script src="js/bootstrap-datetimepicker.js"></script>
+<script src="js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script>
+    $(function(){
+        /*日期控件*/
+        $('.form_datetime').datetimepicker({
+            language:  'zh-CN',
+            format: 'yyyy-mm-dd hh:ii:ss',
+            weekStart: 1,
+            todayBtn:  true,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            forceParse: 0,
+            showMeridian: 1,
+            pickerPosition:"bottom-left"
+        });
+        /*******左侧条样式对应各自块内容****/
+        $(".list-unstyled>li").click(function(){
+            var index = $(".list-unstyled>li").index($(this)),
+                    height = $(this).height(),
+                    length = $(".list-unstyled>li").length,
+                    ID = $(".list-unstyled>li").eq(index).children("a").attr("href");
+            if($(ID).hasClass("active")){
+             /*   $(".toggleUltext").eq(index)
+                        .css("top",height*index)
+                        .show("600");*/
+                $(".toggleUltext").eq(index)
+                        .css("top",$(this).offset().top-height-$(document).scrollTop())
+                        .show("600");
+            }else {
+                for(var i = 0;i < length;i++){
+                    if(i==index){
+                    /*    $(".toggleUltext").eq(i)
+                                .css("top",height*index)
+                                .toggle("600");*/
+                        $(".toggleUltext").eq(i)
+                                .css("top",$(this).offset().top-height-$(document).scrollTop())
+                                .toggle("600");
+                    }else{
+                     /*   $(".toggleUltext").eq(i)
+                                .css("top",height*index)
+                                .hide();*/
+                        $(".toggleUltext").eq(i)
+                                .css("top",$(this).offset().top-height-$(document).scrollTop())
+                                .hide();
+                    }
+                }
+            }
+        });
+        $(".list-unstyled").mouseleave(function () {
+            $(".toggleUltext").hide();
+        });
+        $(".toggleUltext").hover(function(){
+            var index = $(".toggleUltext").index($(this));
+            $(".toggleUltext").eq(index).show();
+        },function(){
+            var index = $(".toggleUltext").index($(this));
+            $(".toggleUltext").eq(index).hide();
+        });
+        $('.toggleUltext>li>a').click(function() {
+            var clickText = $(this).text();
+            $(".panel-heading>h6").each(function(i,v){
+                if($(".panel-heading>h6").eq(i).text() == clickText){
+                    var scrolltop = $('.panel').eq(i).offset().top-100;
+                    $('html,body').stop(false).animate({
+                        scrollTop: scrolltop
+                    }, 200)
+                }
+            });
+        });
+        $(".left").height(window.innerHeight-50);
+    });
+    $(function () {
+        $("[data-toggle='popover']").popover({
+        }).on("mouseenter", function () {
+            var _this = this;
+            $(this).popover("show");
+        }).on("mouseleave", function () {
+            var _this = this;
+            setTimeout(function () {
+                if (!$(".popover:hover").length) {
+                    $(_this).popover("hide")
+                }
+            }, 100);
+        });
+    });
+    $(function(){
+        // 当前系统时间
+        $.ajax({
+            url:"/systemSet/readDateTimeSet.do",
+            type:"post",
+            data:"",
+            dataType:"json",
+            success:function(data){
+                $("#SystemTimeIng").val(data.nowTime);
+                $("#asyncFalseServerTime").val(data.sameServer);
+            }
+        });
+        // 系统厂商信息
+        $.ajax({
+            url:"/systemSet/readProductLicensSet.do",
+            type:"post",
+            data:"",
+            dataType:"json",
+            success:function(data){
+                var length = Object.keys(data[0]).length,
+                        dArry = Object.keys(data[0]);
+                for(var i=0;i<length;i++){
+                    $(".systd").eq(i).text(data[0][dArry[i]]);
+                }
+            }
+        });
+        //数据存储设置
+        $.ajax({
+            url:"/systemSet/readDataStorageSet.do",
+            type:"post",
+            data:"",
+            dataType:"json",
+            success: function(data){
+                $("#dataSave-input").val(data.dataSaveDir);
+                $("#histroyfile").val(data.hisDataDir);
+                $("#AnalysisData-input").val(data.anaDataDir);
+                $("#DiskUse-input").val(data.diskUsage);
+                switch (data.fileSize){
+                    case "10MB":
+                        $("input[name='optionsRadios']:eq(0)").attr("checked",true);
+                        break;
+                    case "100MB":
+                        $("input[name='optionsRadios']:eq(1)").attr("checked",true);
+                        break;
+                    case "500MB":
+                        $("input[name='optionsRadios']:eq(2)").attr("checked",true);
+                        break;
+                    case "1G":
+                        $("input[name='optionsRadios']:eq(3)").attr("checked",true);
+                        break;
+                    default:
+                        $("input[name='optionsRadios']:eq(2)").attr("checked",true);
+                        break;
+                }
+            }
+        });
+        //数据存储设置的提交
+        $("#operationDataStorageSet").click(function(){
+            $("#operationDataStorageSet").attr({"disabled":"disabled"});
+            var reg =/^[0-9]*$/;
+            if(reg.test($("#DiskUse-input").val())&&$("#DiskUse-input").val()!=""){
+                $.ajax({
+                    url:"/systemSet/operationDataStorageSet.do",
+                    type:"post",
+                    data:{
+                        "fileSize":$("input[name='optionsRadios']:checked").val(),
+                        "diskUsage":$("#DiskUse-input").val()
+                    },
+                    dataType:"text",
+                    success:function(data){
+                        if(data == "success"){
+                            $(".operationDataStorageSet-span").text("提交成功").removeClass("red").show();
+                            setTimeout(function(){
+                                $(".operationDataStorageSet-span").hide();
+                            },1500);
+                        }else {
+                            $(".operationDataStorageSet-span").text("提交失败，请稍后再试").addClass("red").show();
+                            setTimeout(function(){
+                                $(".operationDataStorageSet-span").hide();
+                            },1500);
+                        }
+                        if(data){
+                            setTimeout(function(){
+                                $("#operationDataStorageSet").removeAttr("disabled");
+                            },3000)
+                        }
+                    }
+                })
+            }else {
+                $(".operationDataStorageSet-span").text("输入格式不正确，请重新输入").addClass("red").show();
+                setTimeout(function(){
+                    $(".operationDataStorageSet-span").hide();
+                },1500);
+            }
+
+        });
+        //数据存储的清空按钮
+        $(".clearTargetDir").click(function(){
+            var index =  $(".clearTargetDir").index($(this));
+            $.ajax({
+                url:"/systemSet/clearTargetDir.do",
+                type:"post",
+                data:{
+                    "targetDir":$(this).siblings("input").val()
+                },
+                dataType:"text",
+                success:function(data){
+                    if(data == "success"){
+                        $(".clearTargetDirSpan").eq(index).text("清空成功").removeClass("red").show();
+                        setTimeout(function(){
+                            $(".clearTargetDirSpan").eq(index).hide()
+                        },1500);
+                    }else {
+                        $(".clearTargetDirSpan").eq(index).text("清空失败，请待会再试").addClass("red").show();
+                        setTimeout(function(){
+                            $(".clearTargetDirSpan").eq(index).hide()
+                        },1500);
+                    }
+                }
+            })
+        });
+        //总带宽设置
+        $.ajax({
+            url:"/sysNetworkSet/totalBand.do",
+            type:"post",
+            data:"",
+            dataType:"json",
+            success: function(data){
+                $("#bandWidth").val(data.bandWidth);
+            }
+        });
+        //总宽带提交按钮
+        $(".totalBand").click(function(){
+            $(".totalBand").attr({"disabled":"disabled"});
+            var reg =/^[0-9]*$/;
+            if(reg.test($("#bandWidth").val())){
+                $.ajax({
+                    url:"/sysNetworkSet/updateTotalBandSet.do",
+                    type:"post",
+                    data:{
+                        "totalBand":$("#bandWidth").val()
+                    },
+                    dataType:"json",
+                    success:function(data){
+                        if(data.success-0){
+                            $(".totalBandspan").text("导入成功").removeClass("red").show();
+                            setTimeout(function(){
+                                $(".totalBandspan").hide();
+                            },1500)
+                        }else {
+                            $(".totalBandspan").text("导入失败，请稍后再试").addClass("red").show();
+                            setTimeout(function(){
+                                $(".totalBandspan").hide();
+                            },1500)
+                        }
+                        if(data){
+                            setTimeout(function(){
+                                $(".totalBand").removeAttr("disabled");
+                            },3000);
+                        }
+                    }
+                })
+            }else {
+                $(".totalBandspan").text("输入格式不正确，请重新输入").addClass("red").show();
+                setTimeout(function(){
+                    $(".totalBandspan").hide();
+                },1500)
+            }
+
+        });
+        // 管理口设置
+        $.ajax({
+            url: "/sysNetworkSet/netConfig.do",
+            type:"post",
+            data:"",
+            dataType:"json",
+            success: function (data) {
+                $("#ipAdress").val(data.ipAddress);
+                $("#defaultGateway").val(data.defaultDateway);
+                $("#maskByte").val(data.maskBits);
+            }
+        });
+        //管理口设置提交按钮
+        $("#updateManageNetworkInfoUbuntu").click(function(){
+            $("#updateManageNetworkInfoUbuntu").attr({"disabled":"disabled"});
+            $.ajax({
+                url:"/sysNetworkSet/updateManageNetworkInfoUbuntu.do",
+                type:"post",
+                data:{
+                    "ipAddress":$("#ipAdress").val(),
+                    "defaultDateway":$("#maskByte").val(),
+                    "maskBits":$("#defaultGateway").val()
+                },
+                dataType:"json",
+                success:function(data){
+                    if(data.success-0){
+                        $(".updateManageNetworkInfoUbuntuSpan").text("提交成功").removeClass("red").show();
+                        setTimeout(function(){
+                            $(".updateManageNetworkInfoUbuntuSpan").hide();
+                        },1500);
+                    }else{
+                        $(".updateManageNetworkInfoUbuntuSpan").text("提交失败，请稍后再试").addClass("red").show();
+                        setTimeout(function(){
+                            $(".updateManageNetworkInfoUbuntuSpan").hide();
+                        },1500);
+                    }
+                    if(data){
+                        setTimeout(function(){
+                            $("#updateManageNetworkInfoUbuntu").removeAttr("disabled");
+                        },3000)
+                    }
+                }
+            })
+        });
+        //系统时间设置确定按钮
+        $("#sameServer").click(function(){
+            $("#sameServer").attr({"disabled":"disabled"});
+            var reg=/^\s+$/;//非空验证
+            if($("#SystemTimeIng").val()!=""
+                    &&!reg.test($("#SystemTimeIng").val())){
+                $.ajax({
+                    url:"/systemSet/operateDateTimeSet.do",
+                    type:"post",
+                    data:{
+                        "nowTime": $("#SystemTimeIng").val(),
+                        "sameServer":$("#asyncFalseServerTime").val()
+                    },
+                    dataType:"text",
+                    success:function(data){
+                        switch (data){
+                            case "success":
+                                $(".sameServer-span").text("提交成功").removeClass("red").show();
+                                setTimeout(function(){
+                                    $(".sameServer-span").hide();
+                                },1500);
+                                break;
+                            case "fail":
+                                $(".sameServer-span").text("程序异常").addClass("red").show();
+                                setTimeout(function(){
+                                    $(".sameServer-span").hide();
+                                },1500);
+                                break;
+                            case "nonExistent":
+                                $(".sameServer-span").text("输入的 时间同步服务器 不存在").addClass("red").show();
+                                setTimeout(function(){
+                                    $(".sameServer-span").hide();
+                                },1500);
+                                break
+                        }
+                        if(data){
+                           setTimeout(function(){
+                               $("#sameServer").removeAttr("disabled");
+                           },3000);
+                        }
+                    }
+                });
+            }else {
+                $(".sameServer-span").text("请输入正确的时间格式").addClass("red").show();
+                setTimeout(function(){
+                    $(".sameServer-span").hide();
+                },1500);
+            }
+        });
+    });
+    //让表格随浏览器大小变化而自适应
+    $(function () {
+        $('.table').bootstrapTable(); // 初始化表格
+        $(window).resize(function () {
+            $('.table').bootstrapTable('resetView');
+        });
+    });
+    //左侧隐藏出现
+    $(function(){
+        $("#menu-toggle").click(function(){
+            var display = $(".left").css("display");
+            if(display!="block"){
+                $(".right").width("96.5%");
+                $(".left").show();
+                $('.table').bootstrapTable('resetView');
+            }else {
+                $(".left").hide();
+                $(".right").width("100%");
+                $('.table').bootstrapTable('resetView');
+            }
+        })
+    });
+/*    function operateFormatter(value, row, index) {
+        return [
+            '<a class="remove" href="javascript:void(0)" title="Remove">',
+            '<i class="glyphicon glyphicon-remove"></i>',
+            '</a>'
+        ].join('')
+    }*/
+    function operateFormatter(value, row, index) {
+        return [
+            '<img src="images/edit.png"/>',
+            '<img src="images/false.png" style="padding-left: 5%;padding-right: 5%;"/>'
+        ].join('')
+    }
+</script>
